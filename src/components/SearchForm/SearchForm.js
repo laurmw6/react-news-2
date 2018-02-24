@@ -5,7 +5,7 @@ import "./SearchForm.css";
 const SearchForm = props =>
   <form className="search">
     <div className="form-group">
-      <label htmlFor="breed">Breed Name:</label>
+      <label htmlFor="breed">Topic:</label>
       <input
         value={props.search}
         onChange={props.handleInputChange}
@@ -13,7 +13,7 @@ const SearchForm = props =>
         list="breeds"
         type="text"
         className="form-control"
-        placeholder="Type in a dog breed to begin"
+        placeholder="Type in an article topic to begin"
         id="breed"
       />
       <datalist id="breeds">

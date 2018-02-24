@@ -12,11 +12,6 @@ const About = () =>
       <h2>Search for and annotate articles of interest!</h2>
     </Hero>
     <Container style={{ marginTop: 30 }}>
-      <Row>
-        <Col size="md-12">
-          <h1>Welcome To Pupster!</h1>
-        </Col>
-      </Row>
     </Container>
 <Search/>
 
