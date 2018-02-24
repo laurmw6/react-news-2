@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Container from "../components/Container";
 import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
+// import SearchResults from "../components/SearchResults";
 import Alert from "../components/Alert";
 
 
@@ -16,10 +16,12 @@ class Search extends Component {
 
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
-    API.getArticles()
-      .then(res => this.setState({ articles: res.data.message }))
-      .catch(err => console.log(err));
+  this.loadArticles();
   }
+
+  loadArticles = () => {
+    console.log("working")
+  };
 
   handleInputChange = event => {
     this.setState({ search: event.target.value });
@@ -40,8 +42,16 @@ class Search extends Component {
   
   };
 
-handleSaveArticle = event => {
+// handleSaveArticle = event => {
   
+// }
+
+renderPage = () => {
+  if (this.state.results.length === 0) {
+    return<h1>Search to see articles</h1>
+  }
+  // else {
+  //   return <SearchResults results={this.state.results} />}
 }
 
   render() {
@@ -59,7 +69,7 @@ handleSaveArticle = event => {
           handleInputChange={this.handleInputChange}
           articles={this.state.articles}
         />
-        <SearchResults results={this.state.results} />
+        {this.renderPage()}
       </Container>
     );
   }
