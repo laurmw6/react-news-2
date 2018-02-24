@@ -5,6 +5,7 @@ import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
 import Alert from "../components/Alert";
 
+
 class Search extends Component {
   state = {
     search: "",
