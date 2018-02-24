@@ -2,8 +2,8 @@ import React from "react";
 import Hero from "../components/Hero";
 import Search from "../pages/Search";
 import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
+// import Row from "../components/Row";
+// import Col from "../components/Col";
 
 const About = () =>
   <div>

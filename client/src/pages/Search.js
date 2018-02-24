@@ -9,15 +9,15 @@ import Alert from "../components/Alert";
 class Search extends Component {
   state = {
     search: "",
-    breeds: [],
+    articles: [],
     results: [],
     error: ""
   };
 
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
-    API.getBaseBreedsList()
-      .then(res => this.setState({ breeds: res.data.message }))
+    API.getArticles()
+      .then(res => this.setState({ articles: res.data.message }))
       .catch(err => console.log(err));
   }
 
@@ -27,15 +27,23 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.getDogsOfBreed(this.state.search)
+    console.log(this.state.search)
+    API.getArticles(this.state.search)
       .then(res => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
-        this.setState({ results: res.data.message, error: "" });
+        console.log(res.data.response.docs)
+        this.setState({ results: res.data.response.docs, error: "" });
       })
       .catch(err => this.setState({ error: err.message }));
+  
   };
+
+handleSaveArticle = event => {
+  
+}
+
   render() {
     return (
       <Container style={{ minHeight: "80%" }}>
@@ -49,7 +57,7 @@ class Search extends Component {
         <SearchForm
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
-          breeds={this.state.breeds}
+          articles={this.state.articles}
         />
         <SearchResults results={this.state.results} />
       </Container>
